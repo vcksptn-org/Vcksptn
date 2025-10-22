@@ -1,63 +1,48 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VCKSPTN SYSTEM</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
 
-body {
-  overflow: hidden;
-  font-family: 'Courier New', monospace;
-  color: #00fff0;
-  height: 100vh;
-  background: black;
-}
+  <!-- ENTER SYSTEM SCREEN -->
+  <div id="enter-screen">
+    <button id="enter-btn">ENTER SYSTEM</button>
+  </div>
 
-#bg-video {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-  object-fit: cover;
-  filter: brightness(0.5) saturate(1.3);
-  z-index: -2;
-}
+  <!-- MAIN CONTENT -->
+  <div id="main-content" class="hidden">
+    <video autoplay muted loop id="bg-video">
+      <source src="background.mp4" type="video/mp4">
+    </video>
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(0,255,255,0.1) 0%, rgba(0,0,0,0.9) 100%);
-  z-index: -1;
-}
+    <audio id="bg-music" loop>
+      <source src="background.mp3" type="audio/mpeg">
+    </audio>
 
-.content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  animation: fadeIn 3s ease-in-out;
-}
+    <div class="overlay"></div>
 
-h1 {
-  font-size: 2em;
-  letter-spacing: 3px;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff, 0 0 25px #00ffff;
-}
+    <div class="content">
+      <h1>VCKSPTN SYSTEM</h1>
+      <p>NEURAL CYBER INTERFACE ONLINE</p>
+    </div>
+  </div>
 
-p {
-  font-size: 1em;
-  color: #ff00ff;
-  margin-top: 10px;
-  letter-spacing: 2px;
-  text-shadow: 0 0 10px #ff00ff;
-}
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const enterScreen = document.getElementById('enter-screen');
+    const mainContent = document.getElementById('main-content');
+    const music = document.getElementById('bg-music');
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -40%); }
-  to { opacity: 1; transform: translate(-50%, -50%); }
-}
+    enterBtn.addEventListener('click', () => {
+      enterScreen.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+      music.muted = false;
+      music.play();
+    });
+  </script>
+</body>
+</html>
