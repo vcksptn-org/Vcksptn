@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,15 +7,42 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <video autoplay muted loop id="bg-video">
-    <source src="background.mp4" type="video/mp4">
-  </video>
 
-  <div class="overlay"></div>
-
-  <div class="content">
-    <h1>VCKSPTN SYSTEM</h1>
-    <p>CYBERPUNK INTERFACE ONLINE</p>
+  <!-- ENTER SYSTEM SCREEN -->
+  <div id="enter-screen">
+    <button id="enter-btn">ENTER SYSTEM</button>
   </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main-content" class="hidden">
+    <video autoplay muted loop id="bg-video">
+      <source src="background.mp4" type="video/mp4">
+    </video>
+
+    <audio id="bg-music" loop>
+      <source src="background.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="overlay"></div>
+
+    <div class="content">
+      <h1>VCKSPTN SYSTEM</h1>
+      <p>NEURAL CYBER INTERFACE ONLINE</p>
+    </div>
+  </div>
+
+  <script>
+    const enterBtn = document.getElementById('enter-btn');
+    const enterScreen = document.getElementById('enter-screen');
+    const mainContent = document.getElementById('main-content');
+    const music = document.getElementById('bg-music');
+
+    enterBtn.addEventListener('click', () => {
+      enterScreen.classList.add('hidden');
+      mainContent.classList.remove('hidden');
+      music.muted = false;
+      music.play();
+    });
+  </script>
 </body>
 </html>
